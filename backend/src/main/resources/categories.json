@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Fashion accessories",
+    "type": "ALLOWED",
+    "aliases": ["fashion", "accessories"]
+  },
+  {
+    "name": "All types of clothes",
+    "type": "ALLOWED",
+    "aliases": ["clothes", "clothing"]
+  },
+  {
+    "name": "All kinds of footwear",
+    "type": "ALLOWED",
+    "aliases": ["footwear", "shoes", "boots"]
+  },
+  {
+    "name": "Cosmetics",
+    "type": "ALLOWED",
+    "aliases": ["cosmetics", "makeup"]
+  },
+  {
+    "name": "Children toys",
+    "type": "ALLOWED",
+    "aliases": ["child", "toy"]
+  },
+  {
+    "name": "Tech accessories",
+    "type": "ALLOWED",
+    "aliases": ["technology", "accessories", "electronics"]
+  },
+  {
+    "name": "Pet care products",
+    "type": "ALLOWED",
+    "aliases": ["pet", "product"]
+  },
+  {
+    "name": "Food products",
+    "type": "PROHIBITED",
+    "aliases": ["foodstuff", "food", "fruit", "meal", "vegetable"]
+  },
+  {
+    "name": "Sports equipment",
+    "type": "PROHIBITED",
+    "aliases": ["sport", "ball", "racket", "hoop", "weight"]
+  },
+  {
+    "name": "Tobacco products",
+    "type": "PROHIBITED",
+    "aliases": ["tobacco", "cigar", "smoking", "pipe", "smoke"]
+  },
+  {
+    "name": "Cleaning supplies",
+    "type": "PROHIBITED",
+    "aliases": ["bleach", "clean", "product"]
+  },
+  {
+    "name": "Weapons and armory",
+    "type": "PROHIBITED",
+    "aliases": ["gun", "knife", "weapon", "rifle", "armor"]
+  },
+  {
+    "name": "Vehicles and automotive parts",
+    "type": "PROHIBITED",
+    "aliases": ["car", "part", "automotive", "vehicle", "truck", "transport"]
+  },
+  {
+    "name": "Natural fur products",
+    "type": "PROHIBITED",
+    "aliases": ["fur", "natural", "animal"]
+  }
+]
