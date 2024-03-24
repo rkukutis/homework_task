@@ -14,10 +14,10 @@ import java.util.Collections;
 import java.util.List;
 
 @RestController
-@RequestMapping("/images")
+@RequestMapping("images")
 @RequiredArgsConstructor
-@Slf4j
 @CrossOrigin
+@Slf4j
 public class ImageController {
     private final ImageService imageService;
 

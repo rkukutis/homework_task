@@ -3,9 +3,7 @@ package com.rhoopoe.myfashiontrunk.entity;
 import com.rhoopoe.myfashiontrunk.enumerated.ImageItemIdentity;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Cascade;
 import org.springframework.data.annotation.CreatedDate;
-
 import java.time.ZonedDateTime;
 import java.util.Set;
 import java.util.UUID;
@@ -39,4 +37,5 @@ public class ImageUploadLog {
     protected void onCreate() {
         this.createdAt = ZonedDateTime.now();
     }
+
 }

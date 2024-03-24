@@ -9,24 +9,27 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.time.ZonedDateTime;
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
 @Getter
-@RequiredArgsConstructor
 @NoArgsConstructor
 public class CategoryAlias {
+
+    public CategoryAlias(Category category, String aliasString) {
+        this.category = category;
+        this.aliasString = aliasString;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @ManyToOne(cascade = CascadeType.REMOVE)
-    @NonNull
     @JsonIgnore
     private Category category;
 
-    @NonNull
     private String aliasString;
 
     @CreatedDate
@@ -37,4 +40,5 @@ public class CategoryAlias {
     protected void onCreate() {
         this.createdAt = ZonedDateTime.now();
     }
+
 }

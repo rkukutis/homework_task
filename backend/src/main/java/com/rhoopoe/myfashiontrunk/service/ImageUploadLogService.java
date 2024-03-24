@@ -8,10 +8,10 @@ import com.rhoopoe.myfashiontrunk.repository.ImageUploadLogRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -25,6 +25,7 @@ import java.util.Set;
 @Service
 @Slf4j
 @RequiredArgsConstructor
+@Transactional
 public class ImageUploadLogService {
     private final ImageUploadLogRepository logRepository;
     private final CategoryRepository categoryRepository;
@@ -35,6 +36,15 @@ public class ImageUploadLogService {
 
     public void createLog(String originalName, byte[] fileBytes, ImageItemIdentity identifiedAs,
                           Set<Category> identifiedCategories) {
+        if (originalName == null || fileBytes == null || identifiedAs == null) {
+            throw new IllegalArgumentException("All arguments must not be null");
+        }
+        if (originalName.isBlank()) {
+            throw new IllegalArgumentException("Original file name must not be blank");
+        }
+        if (fileBytes.length == 0) {
+            throw  new IllegalArgumentException("File byte array length must be positive");
+        }
         String checksum;
         try {
             // a checksum would be useful for preventing the upload of files that were marked PROHIBITED

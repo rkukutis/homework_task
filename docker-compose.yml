@@ -15,7 +15,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - /home/rick/.aws:/root/.aws
+      - ~/.aws:/root/.aws:ro
   myfashiontrunk-db:
     image: 'postgres:15-alpine'
     container_name: myfashiontrunk-db

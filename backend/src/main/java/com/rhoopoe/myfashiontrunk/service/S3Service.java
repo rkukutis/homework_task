@@ -16,6 +16,12 @@ public class S3Service {
     private String imageBucket;
 
     public String uploadImage(File imageFile, String fileName, String contentType) {
+        if (imageFile == null || fileName == null || contentType == null) {
+            throw new IllegalArgumentException("All arguments must not be null");
+        }
+        if (fileName.isBlank() || contentType.isBlank()) {
+            throw new IllegalArgumentException("String arguments must not be blank");
+        }
         AmazonS3Client s3Client = (AmazonS3Client) AmazonS3ClientBuilder.defaultClient();
         PutObjectRequest request = new PutObjectRequest(imageBucket, fileName, imageFile)
                 .withCannedAcl(CannedAccessControlList.PublicRead);

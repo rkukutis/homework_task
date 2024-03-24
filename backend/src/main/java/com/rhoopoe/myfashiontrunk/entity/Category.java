@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.rhoopoe.myfashiontrunk.enumerated.CategoryType;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Cascade;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.time.ZonedDateTime;
@@ -13,8 +12,8 @@ import java.util.*;
 @Entity
 @Getter
 @Builder
-@RequiredArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
 public class Category {
 

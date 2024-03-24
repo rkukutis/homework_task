@@ -19,8 +19,10 @@ public class DetectionService {
     private int maxDetectedLabels;
 
     public DetectLabelsResult getImageLabels(byte[] imageBytes) {
+        if (imageBytes == null || imageBytes.length == 0) {
+            throw new IllegalArgumentException("Byte array must not be null and length must be positive");
+        }
         AmazonRekognition rekognitionClient = AmazonRekognitionClientBuilder.defaultClient();
-
         if (minConfidence < 0 || minConfidence > 100 || maxDetectedLabels < 1) {
             throw new IllegalArgumentException(
                     "min-detection-confidence must be between 0 and 100, max-detected-labels must be positive"

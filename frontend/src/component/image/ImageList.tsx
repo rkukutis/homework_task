@@ -11,7 +11,7 @@ export default function ImageList() {
     <div className="flex flex-col space-y-2 p-2 h-full">
       {!data || data.length == 0 ? (
         <div className="flex justify-center items-center h-full">
-          <span className="text-2xl">No photos uploaded yet :)</span>
+          <span className="text-2xl">No images uploaded yet :)</span>
         </div>
       ) : (
         data?.map((image) => (
