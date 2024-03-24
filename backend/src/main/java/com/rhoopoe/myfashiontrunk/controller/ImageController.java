@@ -1,6 +1,5 @@
 package com.rhoopoe.myfashiontrunk.controller;
 
-import com.amazonaws.services.rekognition.model.DetectLabelsResult;
 import com.rhoopoe.myfashiontrunk.entity.ItemImage;
 import com.rhoopoe.myfashiontrunk.service.ImageService;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +15,6 @@ import java.util.List;
 @RestController
 @RequestMapping("images")
 @RequiredArgsConstructor
-@CrossOrigin
 @Slf4j
 public class ImageController {
     private final ImageService imageService;

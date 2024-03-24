@@ -14,5 +14,4 @@ RUN mvn -f /app/pom.xml clean package
 FROM openjdk:17-alpine
 COPY --from=backend-builder app/target/*.jar /app-service/app.jar
 WORKDIR /app-service
-EXPOSE 8080
 ENTRYPOINT ["java","-jar","app.jar"]

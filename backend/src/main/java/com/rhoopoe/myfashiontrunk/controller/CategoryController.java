@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("categories")
-@CrossOrigin
 @RequiredArgsConstructor
 @Slf4j
 @Validated
