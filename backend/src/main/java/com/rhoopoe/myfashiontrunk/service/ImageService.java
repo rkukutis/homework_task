@@ -1,6 +1,5 @@
 package com.rhoopoe.myfashiontrunk.service;
 
-
 import com.amazonaws.services.rekognition.model.DetectLabelsResult;
 import com.amazonaws.services.rekognition.model.Label;
 import com.rhoopoe.myfashiontrunk.entity.*;
@@ -11,12 +10,12 @@ import com.rhoopoe.myfashiontrunk.exception.ProhibitedItemException;
 import com.rhoopoe.myfashiontrunk.exception.UnknownItemException;
 import com.rhoopoe.myfashiontrunk.repository.CategoryRepository;
 import com.rhoopoe.myfashiontrunk.repository.ImageRepository;
+import com.rhoopoe.myfashiontrunk.util.FileUtil;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.*;
 import java.util.*;
 
@@ -66,13 +65,19 @@ public class ImageService {
     }
 
     // Not using @Transactional here because doing so would lock up DB resources
-    public ItemImage createImage(@NonNull MultipartFile file) throws IOException {
+    public ItemImage createImage(@NonNull MultipartFile file) {
         String contentType = file.getContentType();
-        if (!contentType.startsWith("image")) {
+        if (!contentType.startsWith("image/jp")) {
             throw new FileTypeException("Only image files must be provided");
         }
         String extension = "." + contentType.split("/")[1];
-        byte[] fileBytes = file.getBytes();
+
+        byte[] fileBytes;
+        try {
+            fileBytes = file.getBytes();
+        } catch (IOException exception) {
+            throw new RuntimeException("Could not get image bytes");
+        }
 
         // First we check if any labels match any category aliases
         DetectLabelsResult detectionResult = detectionService.getImageLabels(fileBytes);
@@ -95,17 +100,14 @@ public class ImageService {
                 file.getOriginalFilename(), fileBytes, ImageItemIdentity.ALLOWED, matchedAllowedCategories
         );
 
-        File tempFile = File.createTempFile("uploaded-image", ".tmp");
-        try (OutputStream os = new FileOutputStream(tempFile)) {
-            os.write(fileBytes);
-        }
+        File imageFile = FileUtil.convertByteArrayToFile(fileBytes);
         // approved images are uploaded to S3 storage and saved in the database
         UUID newImageId = UUID.randomUUID();
         ItemImage itemImage = ItemImage.builder()
                 .id(newImageId)
                 .categories(matchedAllowedCategories)
                 .originalName(file.getOriginalFilename())
-                .url(s3Service.uploadImage(tempFile, newImageId + extension, contentType))
+                .url(s3Service.uploadImage(imageFile, newImageId + extension, contentType))
                 .build();
 
         ItemImage createdImage = imageRepository.save(itemImage);

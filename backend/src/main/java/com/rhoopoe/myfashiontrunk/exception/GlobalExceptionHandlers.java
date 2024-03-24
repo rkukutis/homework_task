@@ -4,14 +4,12 @@ import com.amazonaws.SdkClientException;
 import com.amazonaws.services.rekognition.model.AmazonRekognitionException;
 import com.rhoopoe.myfashiontrunk.entity.Category;
 import jakarta.persistence.EntityExistsException;
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
 import java.util.Objects;
 
 @RestControllerAdvice

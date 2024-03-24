@@ -1,11 +1,10 @@
 package com.rhoopoe.myfashiontrunk.service;
 
 import com.rhoopoe.myfashiontrunk.entity.Category;
-import com.rhoopoe.myfashiontrunk.entity.CategoryAlias;
 import com.rhoopoe.myfashiontrunk.entity.ImageUploadLog;
 import com.rhoopoe.myfashiontrunk.entity.ItemImage;
 import com.rhoopoe.myfashiontrunk.enumerated.CategoryType;
-import com.rhoopoe.myfashiontrunk.model.CategoryDTO;
+import com.rhoopoe.myfashiontrunk.dto.CategoryDTO;
 import com.rhoopoe.myfashiontrunk.repository.CategoryRepository;
 import com.rhoopoe.myfashiontrunk.repository.ImageRepository;
 import com.rhoopoe.myfashiontrunk.repository.ImageUploadLogRepository;
@@ -91,7 +90,7 @@ class CategoryServiceTest {
         ItemImage fakeImage = ItemImage.builder()
                 .id(imageId)
                 .url("url")
-                .categories(new HashSet<>())
+                .categories(Set.of(fakeCategory))
                 .originalName("test")
                 .build();
 
@@ -99,7 +98,7 @@ class CategoryServiceTest {
         ImageUploadLog fakeLog = ImageUploadLog.builder()
                 .id(logId)
                 .md5Checksum("testSum")
-                .identifiedCategories(new HashSet<>())
+                .identifiedCategories(Set.of(fakeCategory))
                 .originalFileName("test")
                 .build();
 

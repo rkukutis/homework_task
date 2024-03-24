@@ -1,7 +1,7 @@
 package com.rhoopoe.myfashiontrunk.controller;
 
 import com.rhoopoe.myfashiontrunk.entity.Category;
-import com.rhoopoe.myfashiontrunk.model.CategoryDTO;
+import com.rhoopoe.myfashiontrunk.dto.CategoryDTO;
 import com.rhoopoe.myfashiontrunk.service.CategoryService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -16,11 +16,11 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/categories")
+@RequestMapping("categories")
+@CrossOrigin
 @RequiredArgsConstructor
 @Slf4j
 @Validated
-@CrossOrigin
 public class
 CategoryController {
     private final CategoryService categoryService;

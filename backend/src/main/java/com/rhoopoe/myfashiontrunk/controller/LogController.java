@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Collections;
 import java.util.List;
 
-@CrossOrigin
 @RestController
-@RequestMapping("/logs")
+@RequestMapping("logs")
+@CrossOrigin
 @Slf4j
 @RequiredArgsConstructor
 public class LogController {

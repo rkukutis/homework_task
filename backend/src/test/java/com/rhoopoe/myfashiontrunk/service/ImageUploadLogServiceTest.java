@@ -57,7 +57,8 @@ class ImageUploadLogServiceTest {
     @Test
     @SneakyThrows
     void givenValidArguments_thenCreateLog() {
-        Set<Category> categorySet = Set.of(new Category(), new Category());
+        Category fakeCategory = Category.builder().build();
+        Set<Category> categorySet = Set.of(fakeCategory);
         byte[] bytes = new byte[100];
         ImageItemIdentity identity = ImageItemIdentity.UNKNOWN;
         byte[] hash = MessageDigest.getInstance("MD5").digest(bytes);

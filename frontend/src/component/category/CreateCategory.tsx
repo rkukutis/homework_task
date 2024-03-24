@@ -34,7 +34,10 @@ export default function CreateCategory() {
   }
 
   function handleAddAlias() {
-    if (aliasString.length == 0) return;
+    if (aliasString.trim().length == 0) {
+      setAliasString("");
+      return;
+    }
     setAliases([...aliases, aliasString]);
     setAliasString("");
   }

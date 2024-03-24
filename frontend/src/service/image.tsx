@@ -17,6 +17,9 @@ export async function uploadImage(
   });
   const response = await res.json();
   if (res.status != 200) {
+    if (res.status == 413) {
+      throw new Error("Image too large! Max image size is 1MB");
+    }
     const error = response as APIErrorResponse;
     switch (error.title) {
       case "PROHIBITED_ITEM_ERROR":

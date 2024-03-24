@@ -38,7 +38,7 @@ export default function ImageUpload() {
       <h3 className="text-xl">Upload an image</h3>
       <p>
         Images of items that belong to permissible categories will be displayed
-        on the left of this window. Max image size: 2MB
+        on the left of this window. Max image size: 1MB
       </p>
       <input
         className="bg-slate-50 py-3 mb-2 rounded"

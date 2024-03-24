@@ -50,7 +50,7 @@ export default function UploadLogList() {
     <div className="bg-slate-50 rounded-lg overflow-auto space-y-1 p-1 h-full">
       {!logs || logs.length == 0 ? (
         <div className="flex justify-center items-center h-full">
-          <span className="text-2xl">No photos uploaded yet :)</span>
+          <span className="text-2xl">No images uploaded yet :)</span>
         </div>
       ) : (
         logs?.map((log) => <LogItem key={log.id} log={log} />)

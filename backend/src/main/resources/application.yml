@@ -1,5 +1,4 @@
-logging:
-  level:DEBUG
+logging: level:DEBUG
 spring:
   datasource:
     password: jIOHohfdoiHIAD445_jds#LLd
@@ -8,8 +7,8 @@ spring:
     driver-class-name: org.postgresql.Driver
   servlet:
     multipart:
-      max-file-size: 2MB
-      max-request-size: 3MB
+      max-file-size: 1MB
+      max-request-size: 2MB
   jpa:
     hibernate:
       ddl-auto: update
