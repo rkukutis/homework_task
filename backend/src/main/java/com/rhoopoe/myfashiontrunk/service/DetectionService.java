@@ -3,7 +3,6 @@ package com.rhoopoe.myfashiontrunk.service;
 import com.amazonaws.services.rekognition.AmazonRekognition;
 import com.amazonaws.services.rekognition.AmazonRekognitionClientBuilder;
 import com.amazonaws.services.rekognition.model.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -19,9 +18,9 @@ public class DetectionService {
     @Value("${app.max-detected-labels}")
     private int maxDetectedLabels;
 
-    public DetectLabelsResult getImageLabels(@NotNull byte[] imageBytes) {
-        if (imageBytes.length == 0) {
-            throw new IllegalArgumentException("Byte array length must be positive");
+    public DetectLabelsResult getImageLabels(byte[] imageBytes) {
+        if (imageBytes == null || imageBytes.length == 0) {
+            throw new IllegalArgumentException("Byte array must not be null and length must be positive");
         }
         AmazonRekognition rekognitionClient = AmazonRekognitionClientBuilder.defaultClient();
         if (minConfidence < 0 || minConfidence > 100 || maxDetectedLabels < 1) {

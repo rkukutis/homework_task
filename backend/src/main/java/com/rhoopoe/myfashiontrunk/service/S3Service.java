@@ -3,8 +3,6 @@ package com.rhoopoe.myfashiontrunk.service;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.*;
-import jakarta.validation.constraints.NotNull;
-import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -17,7 +15,10 @@ public class S3Service {
     @Value("${app.image-bucket}")
     private String imageBucket;
 
-    public String uploadImage(@NonNull File imageFile,@NotNull String fileName,@NonNull String contentType) {
+    public String uploadImage(File imageFile, String fileName, String contentType) {
+        if (imageFile == null || fileName == null || contentType == null) {
+            throw new IllegalArgumentException("All arguments must not be null");
+        }
         if (fileName.isBlank() || contentType.isBlank()) {
             throw new IllegalArgumentException("String arguments must not be blank");
         }

@@ -1,4 +1,4 @@
-package com.rhoopoe.myfashiontrunk.model;
+package com.rhoopoe.myfashiontrunk.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.rhoopoe.myfashiontrunk.enumerated.CategoryType;

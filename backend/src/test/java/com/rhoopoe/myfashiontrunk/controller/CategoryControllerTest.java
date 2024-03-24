@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rhoopoe.myfashiontrunk.entity.Category;
 import com.rhoopoe.myfashiontrunk.entity.CategoryAlias;
 import com.rhoopoe.myfashiontrunk.enumerated.CategoryType;
-import com.rhoopoe.myfashiontrunk.model.CategoryDTO;
+import com.rhoopoe.myfashiontrunk.dto.CategoryDTO;
 import com.rhoopoe.myfashiontrunk.service.CategoryService;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -134,7 +134,6 @@ class CategoryControllerTest {
 
     @Test
     void givenInvalidType_thenReturn400() throws Exception {
-
         JSONObject json = new JSONObject();
         json.put("name", "test");
         json.put("type", "INVALID");
@@ -151,7 +150,6 @@ class CategoryControllerTest {
 
     @Test
     void givenVariedCaseType_thenReturnOk() throws Exception {
-
         JSONObject json = new JSONObject();
         json.put("name", "test");
         json.put("type", "AlLoWeD");
