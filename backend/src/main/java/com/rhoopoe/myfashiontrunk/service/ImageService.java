@@ -65,6 +65,7 @@ public class ImageService {
         return matchedCategories;
     }
 
+    // Not using @Transactional here because doing so would lock up DB resources
     public ItemImage createImage(@NonNull MultipartFile file) throws IOException {
         String contentType = file.getContentType();
         if (!contentType.startsWith("image")) {

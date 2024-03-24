@@ -5,6 +5,7 @@ import com.amazonaws.services.rekognition.model.AmazonRekognitionException;
 import com.rhoopoe.myfashiontrunk.entity.Category;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -52,6 +53,15 @@ public class GlobalExceptionHandlers {
         ProblemDetail res = ProblemDetail.forStatus(400);
         res.setTitle("REQUEST_VALIDATION_ERROR");
         res.setDetail(Objects.requireNonNull(exception.getDetailMessageArguments())[1].toString());
+        return res;
+    }
+
+    @ExceptionHandler({ConstraintViolationException.class})
+    public ProblemDetail handleConstraintValidationError(ConstraintViolationException exception) {
+        log.warn(exception.getMessage());
+        ProblemDetail res = ProblemDetail.forStatus(400);
+        res.setTitle("CONSTRAINT_VALIDATION_ERROR");
+        res.setDetail(exception.getMessage());
         return res;
     }
 

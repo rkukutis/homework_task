@@ -14,7 +14,7 @@ import java.util.Collections;
 import java.util.List;
 
 @RestController
-@RequestMapping("/images")
+@RequestMapping("images")
 @RequiredArgsConstructor
 @Slf4j
 @CrossOrigin

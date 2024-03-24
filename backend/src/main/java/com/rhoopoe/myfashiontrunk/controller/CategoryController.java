@@ -6,6 +6,7 @@ import com.rhoopoe.myfashiontrunk.service.CategoryService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.validator.constraints.UUID;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -13,8 +14,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/categories")
@@ -28,7 +27,7 @@ CategoryController {
 
     @GetMapping
     public ResponseEntity<Page<Category>> getCategories(@RequestParam(name = "page", defaultValue = "0") int page,
-                                           @RequestParam(name = "limit", defaultValue = "50") int limit,
+                                           @RequestParam(name = "limit", defaultValue = "25") int limit,
                                            @RequestParam(name = "sortBy", defaultValue = "createdAt") String sortBy,
                                            @RequestParam(name = "sortDesc", defaultValue = "false") boolean sortDesc)
     {
@@ -60,7 +59,7 @@ CategoryController {
     }
 
     @DeleteMapping("{categoryId}")
-    public ResponseEntity<String> deleteCategory(@PathVariable UUID categoryId) {
+    public ResponseEntity<String> deleteCategory(@PathVariable @UUID String categoryId) {
         categoryService.deleteCategory(categoryId);
         return ResponseEntity.noContent().build();
     }
