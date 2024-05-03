@@ -1,5 +1,8 @@
-# Task - My Fashion Trunk
-Check it out here - [Live version](https://myfashiontrunk.rhoopoe.com). Keep in mind that the website is running on an old decommissioned laptop, so please be patient while trying it out.
+# Homework Task
+Built with Spring Boot, React, TailwindCSS, Amazon Rekognition object identification.
+Check it out here - [Live version](https://myfashiontrunk.rhoopoe.com) (OFFLINE SINCE 2024-05-03). Keep in mind that the website is running on an old decommissioned laptop, so please be patient while trying it out. 
+![img1](https://github.com/rkukutis/IBM-task/assets/48209987/7588a3aa-b914-4b80-b39c-043c837e1269)
+![img2](https://github.com/rkukutis/IBM-task/assets/48209987/925d73c7-437b-47d0-9932-abe0ae8e38df)
 ## Building and running application
 You must supply your own AWS credentials if you wish to run this application locally. Your aws directory must contain a credentials file and a config file with your aws region. Keep in mind that that your selected region must support S3 buckets and Rekognition.
 ### Method A - Docker
